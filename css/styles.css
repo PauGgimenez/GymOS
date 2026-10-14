@@ -1,0 +1,70 @@
+:root {
+  --color-principal: #c0392b;
+  --color-fondo: #1e1e1e;
+  --color-superficie: #272727;
+  --color-texto: #f5f5f5;
+  --color-borde: #cccccc;
+}
+
+body {
+  /* Cuadricula ocupa como minimo toda la altura de la ventana */
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: Arial, sans-serif;
+}
+
+.layout-principal {
+  display: flex;
+  flex: 1;
+}
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  background-color: var(--color-superficie);
+  color: #f5f5f5;
+  padding: 5px;
+}
+
+.sidebar {
+  width: 79px;
+  background-color: var(--color-principal);
+
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+
+    li {
+      a {
+        text-decoration: none;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+
+        &:hover {
+          background-color: var(--color-superficie);
+        }
+
+        &.active {
+          background-color: var(--color-superficie);
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}

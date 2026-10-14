@@ -8,47 +8,60 @@
   </head>
 
   <body>
-    <header>
-      <h1>Bienvenido a GymOS</h1>
-      <p>Gestión de gimnasio</p>
+    <header class="cabecera">
+      <h1>Panel de control</h1>
+      <p>Martes, 13 de Octubre 2026</p>
     </header>
-    <aside>
-      <nav>
-        <ul>
-          <li><a href="#dashboard">Inicio</a></li>
-          <li><a href="#members">Miembros</a></li>
-          <li><a href="#inventory">Máquinas</a></li>
-          <li><a href="#payments">Pagos</a></li>
-          <li><a href="#classes">Clases</a></li>
-          <li><a href="#configuration">Configuración</a></li>
-        </ul>
-      </nav>
-    </aside>
-    <main>
-      <section id="dashboard">
-        <h2>Panel de Control</h2>
-        <p>Accede a las funciones principales de GymOS desde aquí.</p>
+    <div class="layout-principal">
+      <aside class="sidebar">
+        <nav>
+          <ul>
+            <a><img src="/img/Icono GymOS.png" alt="home" width="65" height="70"></a>
+            <li><a href="#dashboard" class="active"><img src="img/Iconos/Pestaña inico.png" alt="home" width="50" height="50"></a></li>
+            <li><a href="#members" ><img src="img/Iconos/Pestaña Miembros.png" alt="members" width="33" height="33"></a></li>
+            <li><a href="#inventory"><img src="img/Iconos/Pestaña Máquinas.png" alt="inventory" width="33" height="33"></a></li>
+            <li><a href="#payments"><img src="img/Iconos/Pestaña Pagos.png" alt="payments" width="33" height="33"></a></li>
+            <li><a href="#classes"><img src="img/Iconos/Pestaña calendario.png" alt="classes" width="33" height="33"></a></li>
+            <li><a href="#configuration"><img src="img/Iconos/Pestaña Configuración.png" alt="configuration" width="50" height="50"></a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="contenido-principal">
+        <section id="dashboard">
+          <h2>Panel de Control</h2>
+          <p>Accede a las funciones principales de GymOS desde aquí.</p>
 
-        <section>
-          <h3>Resumen</h3>
-          <article>
-            <h4>Miembros activos</h4>
-            <p>248</p>
-          </article>
-          <article>
-            <h4>Ingresos del mes</h4>
-            <p>$5,000</p>
-          </article>
-          <article>
-            <h4>Clases de hoy</h4>
-            <p>7</p>
-          </article>
+          <section>
+            <h3>Resumen</h3>
+            <article>
+              <h4>Miembros activos</h4>
+              <p>248</p>
+            </article>
+            <article>
+              <h4>Ingresos del mes</h4>
+              <p>$5,000</p>
+            </article>
+            <article>
+              <h4>Clases de hoy</h4>
+              <p>7</p>
+            </article>
+          </section>
         </section>
-      </section>
-    </main>
+      </main>
+    </div>
 
-    <footer>
-      <p>&copy; 2026 GymOS. Version 1.0</p>
-    </footer>
+    <script>
+      const links = document.querySelectorAll('.sidebar a[href^="#"]');
+
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          // Quitamos la clase active de todos los enlaces
+          links.forEach(l => l.classList.remove('active'));
+          // Se la añadimos únicamente al enlace que acaban de pulsar
+          link.classList.add('active');
+        });
+      });
+  </script>
+ 
   </body>
 </html>
