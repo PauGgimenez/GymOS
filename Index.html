@@ -5,63 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GymOS</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <header class="cabecera">
-      <h1>Panel de control</h1>
-      <p>Martes, 13 de Octubre 2026</p>
-    </header>
     <div class="layout-principal">
       <aside class="sidebar">
         <nav>
           <ul>
-            <a><img src="/img/Icono GymOS.png" alt="home" width="65" height="70"></a>
-            <li><a href="#dashboard" class="active"><img src="img/Iconos/Pestaña inico.png" alt="home" width="50" height="50"></a></li>
-            <li><a href="#members" ><img src="img/Iconos/Pestaña Miembros.png" alt="members" width="33" height="33"></a></li>
-            <li><a href="#inventory"><img src="img/Iconos/Pestaña Máquinas.png" alt="inventory" width="33" height="33"></a></li>
-            <li><a href="#payments"><img src="img/Iconos/Pestaña Pagos.png" alt="payments" width="33" height="33"></a></li>
-            <li><a href="#classes"><img src="img/Iconos/Pestaña calendario.png" alt="classes" width="33" height="33"></a></li>
-            <li><a href="#configuration"><img src="img/Iconos/Pestaña Configuración.png" alt="configuration" width="50" height="50"></a></li>
+            <a
+              ><img
+                src="/img/Icono GymOS.png"
+                alt="home"
+                width="65"
+                height="70"
+            /></a>
+            <li>
+              <a href="#dashboard" class="active"
+                ><img
+                  src="img/Iconos/Pestaña inico.png"
+                  alt="home"
+                  width="50"
+                  height="50"
+              /></a>
+            </li>
+            <li>
+              <a href="#members"
+                ><img
+                  src="img/Iconos/Pestaña Miembros.png"
+                  alt="members"
+                  width="33"
+                  height="33"
+              /></a>
+            </li>
+            <li>
+              <a href="#inventory"
+                ><img
+                  src="img/Iconos/Pestaña Máquinas.png"
+                  alt="inventory"
+                  width="33"
+                  height="33"
+              /></a>
+            </li>
+            <li>
+              <a href="#payments"
+                ><img
+                  src="img/Iconos/Pestaña Pagos.png"
+                  alt="payments"
+                  width="33"
+                  height="33"
+              /></a>
+            </li>
+            <li>
+              <a href="#classes"
+                ><img
+                  src="img/Iconos/Pestaña calendario.png"
+                  alt="classes"
+                  width="33"
+                  height="33"
+              /></a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="#configuration" class="configuration"
+                ><img
+                  src="img/Iconos/Usuario.png"
+                  alt="configuration"
+                  width="50"
+                  height="50"
+              /></a>
+            </li>
           </ul>
         </nav>
       </aside>
-      <main class="contenido-principal">
-        <section id="dashboard">
-          <h2>Panel de Control</h2>
-          <p>Accede a las funciones principales de GymOS desde aquí.</p>
+      <div class="contenido-contenedor">
+        <header class="cabecera">
+          <div>
+            <h1>Panel de control</h1>
+            <p>Martes, 13 de Octubre 2026</p>
+          </div>
 
-          <section>
-            <h3>Resumen</h3>
-            <article>
-              <h4>Miembros activos</h4>
-              <p>248</p>
-            </article>
-            <article>
-              <h4>Ingresos del mes</h4>
-              <p>$5,000</p>
-            </article>
-            <article>
-              <h4>Clases de hoy</h4>
-              <p>7</p>
-            </article>
+          <form>
+            <input
+              type="text"
+              name="q"
+              class="search-input"
+              placeholder="Buscar miembro, clase..."
+            /><img
+              src="img/Iconos/notifications.png"
+              alt="classes"
+              width="33"
+              height="33"
+            />
+            <button type="submit" class="search-button">
+              <strong>+ Nuevo miembro</strong>
+            </button>
+          </form>
+        </header>
+        <main class="contenido-principal">
+          <section id="dashboard">
+            <h2>Panel de Control</h2>
+            <p>Accede a las funciones principales de GymOS desde aquí.</p>
+
+            <section>
+              <h3>Resumen</h3>
+              <article>
+                <h4>Miembros activos</h4>
+                <p>248</p>
+              </article>
+              <article>
+                <h4>Ingresos del mes</h4>
+                <p>$5,000</p>
+              </article>
+              <article>
+                <h4>Clases de hoy</h4>
+                <p>7</p>
+              </article>
+            </section>
           </section>
-        </section>
-      </main>
+        </main>
+      </div>
     </div>
 
     <script>
       const links = document.querySelectorAll('.sidebar a[href^="#"]');
 
-      links.forEach(link => {
-        link.addEventListener('click', (e) => {
-          // Quitamos la clase active de todos los enlaces
-          links.forEach(l => l.classList.remove('active'));
-          // Se la añadimos únicamente al enlace que acaban de pulsar
-          link.classList.add('active');
+      links.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          links.forEach((l) => l.classList.remove("active"));
+
+          link.classList.add("active");
         });
       });
-  </script>
- 
+    </script>
   </body>
 </html>

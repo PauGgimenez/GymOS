@@ -15,7 +15,7 @@ body {
 
   background-color: var(--color-fondo);
   color: var(--color-texto);
-  font-family: Arial, sans-serif;
+  font-family: Manrope, sans-serif;
 }
 
 .layout-principal {
@@ -31,40 +31,74 @@ body {
   background-color: var(--color-superficie);
   color: #f5f5f5;
   padding: 5px;
+
+
+  form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 24%;
+    .search-button {
+      background-color: var(--color-principal);
+      color: #f5f5f5;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  }
 }
 
 .sidebar {
   width: 79px;
   background-color: var(--color-principal);
+  padding-block: 15px;
 
-  ul {
+  nav {
     display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
     flex-direction: column;
-    gap: 15px;
-    align-items: center;
+    height: 100%;
+    justify-content: space-between;
 
-    li {
-      a {
-        text-decoration: none;
-        height: 50px;
-        width: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 10px;
+    ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
 
-        &:hover {
-          background-color: var(--color-superficie);
-        }
+     > a {
+        margin-bottom: 45px;
+      }
 
-        &.active {
-          background-color: var(--color-superficie);
-          opacity: 0.5;
+      li {
+        a {
+          text-decoration: none;
+          height: 50px;
+          width: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 10px;
+
+          &:hover {
+            background-color: var(--color-superficie);
+          }
+
+          &.active {
+            background-color: var(--color-superficie);
+            opacity: 0.5;
+          }
         }
       }
     }
   }
+}
+
+.contenido-contenedor {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
