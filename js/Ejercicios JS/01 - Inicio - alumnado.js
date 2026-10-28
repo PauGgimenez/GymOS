@@ -236,6 +236,15 @@ console.log(reservass);
 // y aplica, en este orden: += 5, -= 3, *= 2 y /= 4. Muestra la
 // cantidad después de cada operación. No vuelvas a declarar la variable.
 // Tu código:
+let caja = 10;
+caja += 5;
+console.log(caja);
+caja-=3;
+console.log(caja);
+caja *= 3;
+console.log(caja);
+caja /= 4;
+console.log(caja);
 
 // Mini ejemplo: una comparación produce true o false.
 // const aforoEjemplo = 15;
@@ -247,12 +256,23 @@ console.log(reservass);
 // edad > minimo, edad >= minimo y edad < minimo. Explica cuál de
 // esas comparaciones sirve para incluir a quien tenga exactamente 18.
 // Tu código:
+let mayor = 20;
+let minimo = 18;
+let menor = 16;
+console.log(mayor > minimo);
+console.log(mayor >= minimo);
+console.log(mayor < minimo);
 
 // Ejercicio 20. Compara el número 12 con el texto "12" usando ==,
 // ===, != y !==. Predice los cuatro resultados y compruébalos.
 // Escribe un comentario sobre la diferencia entre comparar solo el
 // valor y comparar también el tipo.
 // Tu código:
+console.log(12 == "12");
+console.log(12 === "12");
+console.log(12 != "12");
+console.log(12 !== "12");
+
 
 // Mini ejemplo: && exige que se cumplan las dos condiciones.
 // const pagadoEjemplo = true;
@@ -264,11 +284,19 @@ console.log(reservass);
 // si se cumplen las dos condiciones. Cambia uno de los valores y
 // comprueba cómo cambia el resultado.
 // Tu código:
+let reserva = true;
+let haPagado = true;
+console.log(reserva && haPagado);
+reserva = false;
+console.log(reserva && haPagado);
 
 // Ejercicio 22. Una persona puede entrar si tiene una invitación O
 // una cuota activa. Comprueba las cuatro combinaciones posibles de
 // true y false con ||. Anota cuál es la única que no permite entrar.
 // Tu código:
+let invit = true;
+let cuota = false;
+// ACABAARR
 
 // Ejercicio 23. Usa ! para mostrar lo contrario de true y de false.
 // Después predice y comprueba el resultado de !0, !"" y !"hola".
@@ -284,7 +312,9 @@ console.log(reservass);
 // Usa el operador ternario para mostrar "No disponible" cuando lo
 // esté y "Disponible" cuando no. Cambia el valor y prueba de nuevo.
 // Tu código:
-
+const estaOcupada = true;
+let mensaje = estaOcupada ? "No disponible" : "Disponible";
+console.log(mensaje);
 // ============================================================
 // RETOS FINALES. 
 // ============================================================
@@ -300,6 +330,25 @@ console.log(reservass);
 // e) Calcula cuánto se ingresaría por las dos plazas. Cambia las
 //    solicitudes a 3 y comprueba qué resultados cambian.
 // Tu código:
+let hayHueco = true;
+const precioPlaza = 9;
+let plazas = 15;
+let personas = 13;
+console.log("En total hay " + plazas + " plazas, y hay inscritos " + personas + " alumnos, quedan: " + (plazas - personas) + " plazas");
+console.log("Añadiendo 2 nuevos alumnos....");
+personas += 2;
+console.log("Numero de personas inscritas: " + personas + ", ya no hay mas plazas.");
+if (plazas < 15) {
+    hayHueco = true;
+        
+} else {
+    hayHuevo = false;
+}
+
+
+
+
+
 
 // Ejercicio 26. Un centro permite el acceso si la cuota está activa
 // Y la persona es mayor de edad O tiene autorización. Trabaja con
@@ -311,3 +360,7 @@ console.log(reservass);
 // d) Prueba también con cuotaActiva = false. Explica por qué no puede
 //    entrar aunque cumpla la condición de edad o autorización.
 // Tu código:
+
+let cuotaActiva = true;
+let edad_ = 16;
+let autorizacion = true;
