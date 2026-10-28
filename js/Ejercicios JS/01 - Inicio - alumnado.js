@@ -18,10 +18,22 @@
 // líneas que explique qué vas a practicar en este archivo.
 // Tu código:
 
+// COMENTARIO DE UNA LINEA
+
+/* COMENTARIO
+DE VARIAS
+LINEAS */
+
 // Ejercicio 2. Muestra en la consola el nombre de tu aplicación.
 // En otra línea, muestra el número 15. Por último, muestra el texto
 // literal "15". Observa si los dos últimos valores tienen el mismo tipo.
 // Tu código:
+
+console.log("Gym OS");
+console.log(15, typeof 15);
+console.log("15", typeof ("15"));
+// NO SON MISMO TIPO
+
 
 // Ejercicio 3. Una actividad cuesta 18 euros por persona y se apuntan
 // 4 personas. Muestra el importe total con una operación escrita dentro
@@ -29,10 +41,20 @@
 // Antes de ejecutar, anota qué esperas ver en cada línea.
 // Tu código:
 
+console.log(18 * 4); // 72
+console.log("18 * 4"); // 18 * 4
+
+
 // Ejercicio 4. Prueba con los números 17 y 5: una suma, una resta,
 // una multiplicación, una división y el resto de la división (%).
 // Muestra cada resultado en la consola y comprueba tus predicciones.
 // Tu código:
+
+console.log(17 + 5);
+console.log(17 - 5);
+console.log(17 * 5);
+console.log(17 / 5);
+console.log(17 % 5);
 
 // ============================================================
 // 01. VARIABLES Y CONSTANTES
@@ -50,11 +72,21 @@
 // el dato guardado.
 // Tu código:
 
+let reservas = 2;
+console.log(reservas);
+reservas = 3; // Cambia el dato
+console.log(reservas);
+
 // Ejercicio 6. Crea una constante con el nombre de una sala y muéstrala.
 // Debajo, escribe una línea que intente cambiar el nombre. Antes de
 // ejecutarla, predice el error. Déjala comentada para que el resto del
 // archivo pueda seguir funcionando.
 // Tu código:
+
+const nombreSala = "Comedor";
+console.log(nombreSala);
+// nombreSala = "Cocina";  DA ERROR PORQUE ES UNA CONSTANTE Y NO SE PUEDE CAMBIAR
+
 
 // Ejercicio 7. JavaScript también permite declarar variables con var.
 // Declara con var el nombre de una persona, muéstralo, asígnale otro
@@ -62,6 +94,12 @@
 // Para el código nuevo de la aplicación utilizaremos normalmente
 // const si el nombre no se reasigna y let si se va a reasignar.
 // Tu código:
+
+var nombre = "Juan";
+console.log(nombre);
+nombre = "Joselin";
+let animal = "Caballo";
+console.log(animal);
 
 // ============================================================
 // 02. TIPOS DE DATOS
@@ -76,17 +114,42 @@
 // booleano (true o false). Muestra cada valor y, en otra línea,
 // su tipo con typeof.
 // Tu código:
+const nombre = "Juan"; // string
+const edad = 30; // Integer
+const altura = 1.75; // Float
+const esEstudiante = true; // Boolean
+
+console.log(nombre, typeof nombre)    // typeof nos dice el tipo de dato
+console.log(edad, typeof edad)
+console.log(altura, typeof altura)
+console.log(esEstudiante, typeof esEstudiante)
+
+
 
 // Ejercicio 9. Declara una variable sin darle valor y otra con null.
 // Muestra ambas y comprueba sus tipos con typeof. El resultado de
 // typeof null puede sorprenderte: anota en un comentario qué aparece.
 // Tu código:
+let nodato;
+console.log(nodato, typeof nodato) // undefined
+
+let nulo = null;
+console.log(nulo, typeof nulo) // object (es un error de JS, debería ser null)
 
 // Ejercicio 10. Crea un Symbol con una descripción relacionada con tu
 // proyecto y un BigInt terminado en n. Muestra el tipo de ambos.
 // Mini pista: Symbol("registro") y 12345678901234567890n son ejemplos
 // de cómo se escriben, pero elige otros valores.
 // Tu código:
+// 1. Creamos un Symbol con una descripción relacionada con un proyecto (ej. gestión de usuarios)
+const tokenUsuario = Symbol("token_autenticacion_usuario");
+
+// 2. Creamos un BigInt terminado en 'n' (para números enteros muy grandes)
+const presupuestoProyecto = 9876543210987654321n;
+
+// 3. Mostramos el tipo de ambos usando typeof
+console.log(typeof tokenUsuario);        // Muestra: "symbol"
+console.log(typeof presupuestoProyecto); // Muestra: "bigint"
 
 // ============================================================
 // 03. REPASO DE LOS PRIMEROS PASOS
@@ -102,6 +165,12 @@
 // las dos comprobaciones. Finalmente asígnale un texto y comprueba
 // de nuevo el valor y el tipo. ¿Qué ha cambiado en cada paso?
 // Tu código:
+let variable = 20;
+console.log(variable, typeof variable); 
+variable = 10;
+console.log(variable, typeof variable); 
+variable = "Juan"
+console.log(variable, typeof variable); 
 
 // ============================================================
 // 04 Y 05. OPERADORES
@@ -114,22 +183,38 @@
 // console.log((2 + 3) * 4); // 20
 
 // Se conserva la numeración original: después del 11 viene el 14.
+
+
 // Ejercicio 14. Una clase cuesta 12 euros y se apuntan 6 personas.
 // Guarda precio y participantes en variables. Calcula y muestra el
 // ingreso total. Después resta 15 euros de gastos y muestra lo que queda.
 // Antes de ejecutar, predice ambos resultados.
 // Tu código:
+let precio = 12;
+let participantes = 6;
+let ingresoTotal = precio * participantes;
+console.log("Ingreso total bruto: " + ingresoTotal);
+ingresoTotal -= 15;
+console.log("Ingreso total neto: " + ingresoTotal);
+
 
 // Ejercicio 15. Hay 23 pelotas y quieres guardarlas en cajas de 5.
 // Muestra el resultado de dividir 23 entre 5 y el resto con %.
 // Explica en un comentario qué te indica el resto en este caso.
 // Tu código:
 
+console.log("23 / 5 = " + (23 / 5));
+console.log("Resto = " + 23 % 5);
+
+
 // Ejercicio 16. Escribe dos operaciones con los números 4, 2 y 3:
 // una sin paréntesis y otra con paréntesis, de modo que den resultados
 // diferentes. Después calcula 3 elevado a 4 con **. Predice los tres
 // resultados antes de mostrarlos en la consola.
 // Tu código:
+console.log(4 - (2 + 3));
+console.log(4 - 2 + 3);
+console.log(3**4);
 
 // Mini ejemplo: += guarda el resultado en la misma variable.
 // let puntosEjemplo = 5;
@@ -141,6 +226,11 @@
 // con -- y muestra el valor después de cada cambio. ¿Qué valor queda
 // finalmente? Escribe una explicación breve en un comentario.
 // Tu código:
+let reservass = 8;
+reservass++;
+console.log(reservass);
+reservass--;
+console.log(reservass);
 
 // Ejercicio 18. Una caja contiene 10 unidades. Usa una variable let
 // y aplica, en este orden: += 5, -= 3, *= 2 y /= 4. Muestra la
