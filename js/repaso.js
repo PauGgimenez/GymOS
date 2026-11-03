@@ -93,10 +93,7 @@ console.log(colaReparaciones);
 
 const etapas = ["Entrada", "Registro", "Revisión", "Pago", "Salida"];
 
-const etapasCentrales = etapas.slice(
-  1,
-  4,
-); /* Imprime en elemento en indice uno incluido y hasta el 4 no incluido */
+const etapasCentrales = etapas.slice(1, 4); /* Imprime en elemento en indice uno incluido y hasta el 4 no incluido */
 console.log(etapas);
 console.log(etapasCentrales);
 
