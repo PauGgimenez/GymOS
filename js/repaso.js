@@ -152,3 +152,77 @@ const todosNoCargados = nivelesBateria.every(function (nivel) {
     return nivel < 20;
 })
 console.log("Todos con bateria suficiente: " + todosNoCargados)
+
+/* ------ CLASE 3 ----- */ 
+
+// for
+
+for (let numeroMesa = 1; numeroMesa <= 4; numeroMesa++) {
+  console.log("Revisar mesa: " + numeroMesa)
+}
+
+// for con un array
+const edificios = ["Central", "Anexo", "Biblioteca"];
+
+for (let i = 0; i < edificios.length; i++) {
+  console.log("Edificio " + (i + 1) + ": " + edificios[i])
+
+}
+
+//recorrer for con un texto
+
+const palabra = "MUSEO";
+const vocales = "AEIOU"
+let totalVocales = 0;
+
+for (let i = 0; i < palabra.length; i++) {
+
+    const letra = palabra[i];
+    if(vocales.includes(letra)) {
+      totalVocales++;
+
+    }
+
+}
+
+console.log("Total de vocales en la palabra: " + palabra + ", " + totalVocales + " vocales.")
+
+
+// acumular con for
+
+const duraciones = [12, 8, 15]
+let minutosTotales = 0;
+
+for (let i = 0; i < duraciones.length; i++) {
+  minutosTotales += duraciones[i];
+
+}
+
+console.log("La duracion total es: " + minutosTotales);
+
+// while 
+
+let paginasLeidas = 0;
+
+const objetivoLectura = 10;
+
+while (paginasLeidas < objetivoLectura) {
+  paginasLeidas += 3;
+  console.log(paginasLeidas + " leidas");
+
+}
+
+console.log("Objetivo alcanzado: " + paginasLeidas + " leidas");
+
+
+do {
+  
+} while (condition);
+
+// for...of tomar un valor directamente
+
+const destinos = ["Almacen", "Recepcion", "Oficina"]
+for(const destino of destinos) {
+  console.log("Enviar a: " + destino)
+
+}
