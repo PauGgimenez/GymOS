@@ -58,36 +58,32 @@ for (let i = 0; i < actividades.length; i++) {
 const texto = "deporte activo";
 const vocales = "aeiou";
 let contador = 0;
-for(const letra of texto) {
-    if (vocales.includes(letra)) {
-        contador++
-    }
-
+for (const letra of texto) {
+  if (vocales.includes(letra)) {
+    contador++;
+  }
 }
 console.log("Total vocales en el texto: " + contador);
 
-
 // 6. Dado un array de números, usa un bucle para crear un nuevo array que contenga solo los números mayores a 10.
 // Elige tú los números del array.
-const numeros = [11, 9, 12, 5, 33, 101, 2]
-const nuevoN = []
+const numeros = [11, 9, 12, 5, 33, 101, 2];
+const nuevoN = [];
 numeros.forEach((n) => {
-    if (n > 10) {
-        nuevoN.push(n)
-    }
-})
+  if (n > 10) {
+    nuevoN.push(n);
+  }
+});
 console.log("Nuevo array con numeros mayores a 10: " + nuevoN);
-
 
 // 7. Tabla de una tarifa
 // Una entrada cuesta 7 euros. Muestra el coste de comprar de 1 a 10
 // entradas: "1 entrada: 7 €", "2 entradas: 14 €", etc.
 // Tu código:
-let entrada = 7
+let entrada = 7;
 for (let i = 1; i < 10; i++) {
-    console.log(i + " entrada: " + entrada + "€");
-    entrada += 7
-    
+  console.log(i + " entrada: " + entrada + "€");
+  entrada += 7;
 }
 
 // 8. Texto al revés
@@ -95,12 +91,27 @@ for (let i = 1; i < 10; i++) {
 // Debe salir "ALAS". Recorre las posiciones desde la última hasta la
 // primera.
 // Tu código:
+const palabraS = "SALA";
+let textoReves = "";
+for (let i = palabraS.length - 1; i >= 0; i--) {
+  textoReves += palabraS[i];
+}
+console.log("Texto al revés: " + textoReves);
 
 // 9. Alcanzar un objetivo
 // Una hucha empieza con 0 euros. Cada semana se ingresan 6 euros.
 // Usa while para mostrar en qué semana se alcanzan o superan los 25 euros.
 // Muestra el saldo de cada semana y detén el bucle al llegar al objetivo.
 // Tu código:
+let hucha = 0;
+let semana = 1;
+while (hucha < 25) {
+  semana++;
+  hucha += 6;
+  console.log("Semana " + semana + ": " + hucha);
+}
+console.log("Objetivo alcanzado en la semana " + semana);
+
 
 // 10. Pirámide centrada
 // Crea dos variables: una con el carácter (por ejemplo, "#") y otra con
@@ -113,3 +124,11 @@ for (let i = 1; i < 10; i++) {
 //  #######
 // #########
 // Tu código:
+for (let i = 0; i < 5; i++) {
+  console.log("#");
+  for (let j = 0; j < 5; j++) {
+    console.log(" ");
+    
+  }
+
+}
