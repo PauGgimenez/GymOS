@@ -1,225 +1,362 @@
-console.log("Hola, este es un mensaje de repaso en JavaScript.");
-console.log(5);
-console.log(5 + 23);
+// ============================================================
+// 1. CONSOLA, COMENTARIOS, VARIABLES Y TIPOS DE DATOS
+// ============================================================
 
-var antigua = "no se usa"; // desuso
-const constante = "no cambia"; // variable que no puede cambiar
-let incidencia = "abierta"; // variable que puede cambiar
+// Comentario de una sola línea
+/* Comentario de
+   varias líneas */
 
-console.log(antigua);
-console.log(constante);
-console.log(incidencia);
+// --- Declaración de variables ---
+var antigua = "no se usa";      // En desuso
+const constante = "no cambia";  // Constante: no se puede reasignar (daría error)
+let incidencia = "abierta";     // Variable: permite cambiar su valor más adelante
+incidencia = "cerrada";
 
-// ----- TIPOS DE DATOS -----
-const nombre = "Juan"; // string
-const edad = 30; // Integer
-const altura = 1.75; // Float
-const esEstudiante = true; // Boolean
 
-console.log(nombre, typeof nombre); // typeof nos dice el tipo de dato
-console.log(edad, typeof edad);
-console.log(altura, typeof altura);
-console.log(esEstudiante, typeof esEstudiante);
+// --- Tipos de datos primitivos y typeof ---
+const nombre = "Juan";          // string (texto)
+const edad = 30;                // number (entero)
+const altura = 1.75;            // number (decimal / float)
+const esEstudiante = true;      // boolean (true o false)
+
+
+console.log(nombre, typeof nombre);             // "string"
+console.log(edad, typeof edad);                 // "number"
+console.log(esEstudiante, typeof esEstudiante); // "boolean"
 
 let nodato;
-console.log(nodato, typeof nodato); // undefined
+console.log(nodato, typeof nodato); // undefined (declarada pero sin valor asignado)
 
 let nulo = null;
-console.log(nulo, typeof nulo); // object (es un error de JS, debería ser null)
+console.log(nulo, typeof nulo);     // "object" (fallo histórico de JS, representa valor nulo)
 
-// ----- OPERADORES DE COMPARACIÓN -----
-console.log(10 === "10"); // false, === compara valor y tipo de dato
-console.log(10 !== "10"); // true, !== compara valor y tipo de dato
+const tokenUsuario = Symbol("id_unico");       // symbol (identificador único)
+const numeroGrande = 9876543210987654321n;     // bigint (termina en 'n', para enteros enormes)
+console.log(typeof tokenUsuario, typeof numeroGrande);
 
-console.log(10 == "10"); // true, == compara solo el valor
-console.log(10 != "10"); // false, != compara solo el valor
+// --- Tipado dinámico ---
+// Una variable declarada con 'let' puede cambiar de tipo de dato:
+let datoCambiante = 20;      // Ahora es number
+datoCambiante = "veinte";    // Ahora pasa a ser string
 
-// Concatenación igual que en java
-let mensaje = "Hola, " + nombre + "!";
-console.log(mensaje);
-// Otra opción
-console.log(`Hola, ${nombre}!`); // Template literals, permite usar variables dentro de un string
+// ============================================================
+// 2. OPERADORES
+// ============================================================
 
-// ----- PROPIEDADES -----
-const nombre2 = "Juan";
-console.log(nombre2.length); // 4, nos dice la longitud de un string
-console.log(nombre2[0]); // J, nos da el primer caracter del string
-console.log(nombre2.charAt(0)); // J, nos da el primer caracter del string
-console.log(nombre2[nombre2.length - 1]); // n, nos da el último caracter del string
+// --- Aritméticos y prioridad ---
+console.log(17 + 5);  // Suma: 22
+console.log(17 - 5);  // Resta: 12
+console.log(17 * 5);  // Multiplicación: 85
+console.log(17 / 5);  // División: 3.4
+console.log(17 % 5);  // Resto de la división (módulo): 2 (útil para saber pares: n % 2 === 0)
+console.log(3 ** 4);  // Potencia (3 elevado a 4): 81
 
-const avisoEntrega = "Paquete listo para recoger";
-console.log(avisoEntrega.includes("Paquete")); // true, nos dice si el string contiene la palabra "Paquete"
-console.log(avisoEntrega.indexOf("Paquete")); // 0, nos dice la posición de la palabra "Paquete" en el string
+// Los paréntesis alteran la prioridad matemática:
+console.log(2 + 3 * 4);   // 14 (primero multiplica)
+console.log((2 + 3) * 4); // 20 (primero suma el paréntesis)
 
-console.log(nombre2.toUpperCase()); // JUAN, convierte a mayúsculas
-console.log(nombre2.toLowerCase()); // juan, convierte a minúsculas
+// --- Asignación, incremento y decremento ---
+let caja = 10;
+caja += 5; // Equivale a: caja = caja + 5 (15)
+caja -= 3; // Equivale a: caja = caja - 3 (12)
+caja *= 2; // Equivale a: caja = caja * 2 (24)
+caja /= 4; // Equivale a: caja = caja / 4 (6)
 
-const codigo = " 12345 ";
-console.log(codigo);
-const codigoSinEspacios = codigo.trim(); // elimina espacios al inicio y al final del string
-console.log(codigoSinEspacios);
-console.log(codigoSinEspacios.slice(0, 2)); // 12, nos da los primeros 2 caracteres del string
+let reservas = 8;
+reservas++; // Incrementa en 1 (9)
+reservas--; // Resta 1 (8)
 
-//replace, reemplaza un valor por otro
-const mensaje2 = "Hola, Juan!";
-console.log(mensaje2.replace("Juan", "Pedro")); // Hola, Pedro!
-console.log(mensaje2.replaceAll("a", "o")); // Holo, Juon!
 
+// --- Comparación ---
+console.log(10 === "10"); // false -> Estricto: compara valor Y tipo de dato (recomendado)
+console.log(10 !== "10"); // true  -> Estricto: ¿son de distinto valor o distinto tipo?
+console.log(10 == "10");  // true  -> Débil: compara SOLO el valor (convierte el tipo)
+console.log(10 != "10");  // false -> Débil: compara SOLO el valor
+console.log(18 >= 18);    // true  -> Mayor o igual (también existen >, <, <=)
+
+// --- Lógicos (&&, ||, !) ---
+const tieneReserva = true;
+const haPagado = false;
+
+// && (AND): Devuelve true SOLO si AMBAS condiciones se cumplen
+console.log(tieneReserva && haPagado); // false
+
+// || (OR): Devuelve true si AL MENOS UNA condición se cumple
+console.log(tieneReserva || haPagado); // true
+
+// ! (NOT): Invierte el valor booleano
+console.log(!tieneReserva); // false
+
+// Valores Falsy (se evalúan como false: 0, "", null, undefined, NaN) y Truthy (el resto):
+console.log(!0);      // true (porque 0 es falsy, su contrario es true)
+console.log(!"");     // true (cadena vacía es falsy)
+console.log(!"hola"); // false (texto con contenido es truthy)
+
+// --- Operador Ternario ---
+// Estructura: condicion ? valorSiTrue : valorSiFalse
 const documento = true;
-const validado = documento ? "Documento validado" : "Documento no validado"; // operador ternario, si validado es true derecha ? sino izquierda :
-console.log(validado); // Documento validado
+const validado = documento ? "Documento validado" : "Documento no validado";
+console.log(validado);
 
-// --------------- ARRAYS --------------------
 
-const lecturas = [];
-lecturas[0] = 12;
-lecturas[2] = 16;
-console.log(lecturas);
+/// ============================================================
+// 3. CADENAS DE TEXTO (STRINGS) Y SUS MÉTODOS
+// ============================================================
+// Nota: Los métodos de string NO modifican el texto original, devuelven uno nuevo.
 
+// --- Concatenación y Plantillas (Template Literals) ---
+console.log("Hola, " + nombre + "!"); // Concatenación clásica con +
+console.log(`Hola, ${nombre}!`);      // Template literals (comillas invertidas ` ` y ${})
+
+// Las comillas invertidas respetan los saltos de línea sin usar \n:
+const mensajeMultilinea = `Actividad: Yoga
+Sala: Norte
+Hora: 18:00`;
+
+// --- Propiedades y acceso a caracteres ---
+const palabraDemo = "Juan";
+console.log(palabraDemo.length);                  // 4 (longitud; los espacios también cuentan)
+console.log(palabraDemo[0]);                      // "J" (primer carácter, índice 0)
+console.log(palabraDemo.charAt(0));               // "J" (alternativa con método)
+console.log(palabraDemo[palabraDemo.length - 1]); // "n" (último carácter dinámico)
+
+// --- Búsqueda dentro de cadenas ---
+const avisoEntrega = "Paquete listo para recoger";
+console.log(avisoEntrega.includes("Paquete")); // true (devuelve booleano si existe)
+console.log(avisoEntrega.indexOf("Paquete"));  // 0 (devuelve el índice donde empieza)
+console.log(avisoEntrega.indexOf("urgente"));  // -1 (devuelve -1 cuando NO lo encuentra)
+
+// --- Transformación, extracción y reemplazo ---
+console.log(palabraDemo.toUpperCase()); // "JUAN" (a mayúsculas)
+console.log(palabraDemo.toLowerCase()); // "juan" (a minúsculas, útil para comparar textos)
+
+const codigo = "  SALA-204  ";
+const codigoLimpio = codigo.trim();     // "SALA-204" (elimina espacios al inicio y al final)
+console.log(codigoLimpio.slice(0, 4));  // "SALA" (extrae desde índice 0 hasta el 4 sin incluirlo)
+console.log(codigoLimpio.slice(5));     // "204" (sin 2º parámetro, extrae hasta el final)
+
+const frase = "sala norte sala sur";
+console.log(frase.replace("sala", "aula"));    // "aula norte sala sur" (solo cambia la 1ª aparición)
+console.log(frase.replaceAll("sala", "aula")); // "aula norte aula sur" (cambia todas)
+
+// Encadenamiento de métodos (ejecutar varios seguidos en una línea):
+const textoPreparado = "   yoga para principiantes   "
+  .trim()
+  .toUpperCase()
+  .replace("PRINCIPIANTES", "INICIO");
+console.log(textoPreparado); // "YOGA PARA INICIO"
+
+
+// ============================================================
+// 4. CONDICIONALES (IF / ELSE IF / ELSE Y SWITCH)
+// ============================================================
+
+// --- if / else if / else ---
+const puntuacion = 82;
+
+if (puntuacion < 0 || puntuacion > 100) {
+  console.log("Puntuación no válida");
+} else if (puntuacion < 50) {
+  console.log("Nivel Inicial");
+} else if (puntuacion < 80) {
+  console.log("Nivel Intermedio");
+} else {
+  console.log("Nivel Avanzado");
+}
+
+// --- switch ---
+// Evalúa casos exactos (usa comparación estricta ===). Requiere 'break' en cada caso.
+const modoEnvio = "express";
+let costeEnvio;
+
+switch (modoEnvio) {
+  case "normal":
+    costeEnvio = 4;
+    break;
+  case "express":
+    costeEnvio = 8;
+    break;
+  case "recogida":
+    costeEnvio = 0;
+    break;
+  default:
+    costeEnvio = -1; // Si no coincide con ninguno de los anteriores
+    console.log("Modo de envío no válido");
+}
+
+
+// ============================================================
+// 5. ARRAYS, OBJETOS Y JSON
+// ============================================================
+
+// --- Creación y acceso ---
+const deportes = ["Yoga", "Boxeo", "Pilates"];
+console.log(deportes[0]);                   // "Yoga" (primero)
+console.log(deportes[deportes.length - 1]); // "Pilates" (último)
+console.log(deportes.length);               // 3 (cantidad de elementos)
+
+// --- Añadir y retirar elementos en los extremos ---
 const colaReparaciones = ["Proyector", "Impresora"];
-colaReparaciones.push("Pantalla"); /* Añade elemento al final */
-colaReparaciones.unshift("Router"); /* Añade al principio */
-console.log(colaReparaciones);
+colaReparaciones.push("Pantalla");   // Añade al FINAL
+colaReparaciones.unshift("Router");  // Añade al PRINCIPIO
 
-const ultimaRetirada =
-  colaReparaciones.pop(); /* selecciona y quita el ultimo elemento */
-const primerRetirada =
-  colaReparaciones.shift(); /* selecciona y quita el primer elemento*/
-console.log(ultimaRetirada);
-console.log(primerRetirada);
-console.log(colaReparaciones);
+const ultimo = colaReparaciones.pop();     // Extrae y elimina el ÚLTIMO ("Pantalla")
+const primero = colaReparaciones.shift();  // Extrae y elimina el PRIMERO ("Router")
 
-// Slice y splash
-
+// --- Copiar (slice) y modificar/extraer (splice) ---
 const etapas = ["Entrada", "Registro", "Revisión", "Pago", "Salida"];
 
-const etapasCentrales = etapas.slice(1, 4); /* Imprime en elemento en indice uno incluido y hasta el 4 no incluido */
-console.log(etapas);
-console.log(etapasCentrales);
+// slice(inicio, fin): Copia un tramo SIN modificar el array original (fin no incluido)
+const etapasCentrales = etapas.slice(1, 4); // ["Registro", "Revisión", "Pago"]
 
-const retiradas = etapas.splice(2, 1); /* Lo extrae del array*/
-console.log(retiradas);
+// splice(inicio, cantidadABorrar, nuevosElementos...): SÍ modifica el array original
+const extraidos = etapas.splice(2, 1);        // Elimina 1 elemento en el índice 2 ("Revisión")
+etapas.splice(1, 1, "Agenda");                // En índice 1, borra 1 ("Registro") y mete "Agenda"
 
-const tareasMañana = ["Abrir edificio", "Revisar equipos"];
+// --- Unir arrays (concat) y convertir a texto (join) ---
+const tareasManana = ["Abrir edificio", "Revisar equipos"];
 const tareasTarde = ["Cerrar aulas", "Activar alarma"];
-const concatArr = tareasMañana.concat(tareasTarde); /* Concatenar arrays */
-console.log(concatArr);
+const todasLasTareas = tareasManana.concat(tareasTarde); // Une ambos arrays en uno nuevo
+const tareasTexto = todasLasTareas.join(" - ");          // Crea un string separando con " - "
 
-const tareasLimpio =
-  concatArr.join(" - "); /* Unir elementos del array por un elemento indicado */
-console.log(tareasLimpio);
-
+// --- Ordenación (sort y reverse) ---
 const nombreSalas = ["Taller", "Archivo", "Biblioteca"];
-nombreSalas.sort();
-console.log(nombreSalas);
-nombreSalas.reverse();
-console.log(nombreSalas);
+nombreSalas.sort();    // Orden alfabético: ["Archivo", "Biblioteca", "Taller"]
+nombreSalas.reverse(); // Invierte el orden: ["Taller", "Biblioteca", "Archivo"]
 
+// Para números, sort() por defecto falla porque los ordena como texto (Unicode: 11 va antes que 3).
+// Se necesita una función de comparación:
 const tiempos = [6, 42, 11, 3];
-tiempos.sort();
-console.log(tiempos); /* los ordena solo por el primer digitos de los numeros */
-
 tiempos.sort(function (a, b) {
-  return a - b;
-
+  return a - b; // De menor a mayor (para mayor a menor sería: b - a)
 });
 
-console.log(tiempos);
+// --- Recorrer con forEach ---
+const equipos = ["Portátil", "Tableta", "Monitor"];
 
-// foreach
+// Con función tradicional:
+equipos.forEach(function (equipo, i) {
+  console.log(`Equipo ${i + 1}: ${equipo}`);
+});
 
-const equipos = ["Portatil", "Tableta", "Monitor"]
-equipos.forEach(function(equipo, i) {
-    console.log(`Equipo ${i + 1}: ${equipo}`)
-    /* console.log("Equipo " + i + " : "+ equipo) */ 
+// Con función flecha (equivalente más corto):
+equipos.forEach((equipo, i) => console.log(`Equipo ${i + 1}: ${equipo}`));
 
-
-})
-
-// every y some
-
+// --- Comprobaciones con every y some ---
 const nivelesBateria = [80, 55, 21];
 
+// every: Devuelve true solo si TODOS los elementos cumplen la condición
 const todosCargados = nivelesBateria.every(function (nivel) {
-    return nivel >= 20;
-})
-console.log("Todos con bateria suficiente: " + todosCargados)
+  return nivel >= 20;
+}); // true
 
-const todosNoCargados = nivelesBateria.every(function (nivel) {
-    return nivel < 20;
-})
-console.log("Todos con bateria suficiente: " + todosNoCargados)
+// some: Devuelve true si AL MENOS UNO cumple la condición
+const algunoCritico = nivelesBateria.some(function (nivel) {
+  return nivel < 15;
+}); // false
 
-/* ------ CLASE 3 ----- */ 
+// --- Arrays de Objetos ---
+const pedidos = [
+  { codigo: "P-3", unidades: 4, enviado: false },
+  { codigo: "P-1", unidades: 2, enviado: true },
+  { codigo: "P-2", unidades: 6, enviado: false }
+];
 
-// for
+// Ordenar objetos por una propiedad numérica:
+pedidos.sort(function (a, b) {
+  return a.unidades - b.unidades;
+});
 
-for (let numeroMesa = 1; numeroMesa <= 4; numeroMesa++) {
-  console.log("Revisar mesa: " + numeroMesa)
+// Acceder y filtrar propiedades dentro de forEach:
+let unidadesPendientes = 0;
+pedidos.forEach(function (pedido) {
+  if (!pedido.enviado) { // Equivale a: pedido.enviado === false
+    unidadesPendientes += pedido.unidades;
+  }
+});
+
+// --- Conversión JSON ---
+const jsonRecibido = '[{"sala":"A","ocupada":true},{"sala":"B","ocupada":false}]';
+
+// JSON.parse(): Convierte texto JSON en un array/objeto de JavaScript manipulable
+const salasArray = JSON.parse(jsonRecibido);
+salasArray[0].ocupada = false; // Modificamos el objeto normalmente
+
+// JSON.stringify(): Convierte un array/objeto de JavaScript en texto JSON
+const nuevoJson = JSON.stringify(salasArray);
+
+
+// ============================================================
+// 6. BUCLES (FOR, FOR...OF, WHILE, DO...WHILE)
+// ============================================================
+
+// --- Bucle for clásico ---
+for (let mesa = 1; mesa <= 4; mesa++) {
+  console.log("Revisar mesa: " + mesa);
 }
 
-// for con un array
+// Recorrer un array usando su índice (útil cuando necesitas la posición i):
 const edificios = ["Central", "Anexo", "Biblioteca"];
-
 for (let i = 0; i < edificios.length; i++) {
-  console.log("Edificio " + (i + 1) + ": " + edificios[i])
-
+  console.log(`Edificio ${i + 1}: ${edificios[i]}`);
 }
 
-//recorrer for con un texto
+// Recorrer un texto o array al revés (desde el último índice hasta el 0):
+const palabraOriginal = "SALA";
+let palabraInvertida = "";
+for (let i = palabraOriginal.length - 1; i >= 0; i--) {
+  palabraInvertida += palabraOriginal[i];
+}
+console.log(palabraInvertida); // "ALAS"
 
-const palabra = "MUSEO";
-const vocales = "AEIOU"
-let totalVocales = 0;
-
-for (let i = 0; i < palabra.length; i++) {
-
-    const letra = palabra[i];
-    if(vocales.includes(letra)) {
-      totalVocales++;
-
-    }
-
+// --- Bucle for...of ---
+// Toma el valor directamente sin usar índices (sirve para arrays y para strings):
+const destinos = ["Almacén", "Recepción", "Oficina"];
+for (const destino of destinos) {
+  console.log("Enviar a: " + destino);
 }
 
-console.log("Total de vocales en la palabra: " + palabra + ", " + totalVocales + " vocales.")
-
-
-// acumular con for
-
-const duraciones = [12, 8, 15]
-let minutosTotales = 0;
-
-for (let i = 0; i < duraciones.length; i++) {
-  minutosTotales += duraciones[i];
-
+const textoVocales = "deporte activo";
+let contadorVocales = 0;
+for (const letra of textoVocales) {
+  if ("aeiou".includes(letra)) {
+    contadorVocales++;
+  }
 }
 
-console.log("La duracion total es: " + minutosTotales);
-
-// while 
-
-let paginasLeidas = 0;
-
-const objetivoLectura = 10;
-
-while (paginasLeidas < objetivoLectura) {
-  paginasLeidas += 3;
-  console.log(paginasLeidas + " leidas");
-
+// --- Bucle while ---
+// Se ejecuta mientras la condición sea true (cuando no sabemos cuántas vueltas dará):
+let ahorro = 0;
+let semanas = 0;
+while (ahorro < 25) {
+  semanas++;
+  ahorro += 6;
 }
+console.log(`Objetivo alcanzado en la semana ${semanas} con ${ahorro}€`);
 
-console.log("Objetivo alcanzado: " + paginasLeidas + " leidas");
-
-
+// --- Bucle do...while ---
+// Garantiza que el bloque se ejecute AL MENOS UNA VEZ antes de comprobar la condición:
+let intentos = 0;
 do {
-  
-} while (condition);
+  intentos++;
+  console.log("Intento número: " + intentos);
+} while (intentos < 3);
 
-// for...of tomar un valor directamente
+// --- Bucles anidados (Ejemplo: Pirámide centrada del Ejercicio 10 de Bucles) ---
+const alturaPiramide = 5;
+const caracter = "#";
 
-const destinos = ["Almacen", "Recepcion", "Oficina"]
-for(const destino of destinos) {
-  console.log("Enviar a: " + destino)
+for (let fila = 1; fila <= alturaPiramide; fila++) {
+  let linea = "";
 
+  // 1º bucle interno: añade los espacios a la izquierda para centrar
+  for (let s = 1; s <= alturaPiramide - fila; s++) {
+    linea += " ";
+  }
+  // 2º bucle interno: añade los caracteres impares (1, 3, 5, 7, 9)
+  for (let c = 1; c <= 2 * fila - 1; c++) {
+    linea += caracter;
+  }
+
+  console.log(linea);
 }
