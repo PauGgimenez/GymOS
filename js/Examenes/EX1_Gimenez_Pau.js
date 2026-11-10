@@ -135,24 +135,19 @@ console.log(piezas, typeof piezas);
 // puedas pagar, detén el recorrido con break: no debes probar los productos siguientes.
 // Muestra cuántos productos has comprado y cuánto dinero queda. Con estos datos, el producto de 9 euros detiene la compra.
 const precios = [6, 7, 9, 4, 6];
-let sinDinero = false;
-const dinero = 20;
-comprado = 0;
+let dinero = 20;
+let comprados = 0;
 let i = 0;
-while (!sinDinero) {
-  comprado += precios[i];
-  i++;
-  console.log(i + ". Llevas gastado: " + comprado);
-  if (comprado > dinero || i == precios.length) {
-    sinDinero = true;
+
+while (i < precios.length) {
+  if (precios[i] > dinero) {
+    break; // CORTA EL BUCLE AQUÍ MISMO, NO LEE NINGÚN PRODUCTO MÁS
   }
+  
+  dinero -= precios[i];
+  comprados++;
+  i++;
 }
 
-console.log("Has comprado " + (i - 1) + " productos");
-if (i == precios.length) {
-  console.log("Has comprado todo");
-} else {
-  console.log(
-    "No puedes comprar mas productos, el siguiente costaba " + precios[i - 1] + " y se te quedaría con " + comprado);
-}
-console.log("Te quedan: " + (dinero - (comprado - precios[i - 1])) + "€");
+console.log("Has comprado " + comprados + " productos");
+console.log("Te quedan: " + dinero + "€");
