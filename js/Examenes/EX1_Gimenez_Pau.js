@@ -49,28 +49,17 @@ if (diasMas30 >= 2) {
 // las mayúsculas o haya espacios en los extremos. Guárdalos sin esos
 // espacios y en mayúsculas. Muestra cuántos hay y únelos con " | ".
 // Tu código:
-const eventos = [
-  "  Festival de jazz ",
-  "NUEVA biblioteca",
-  "  Taller de Jazz",
-  "Exposición de fotografía",
-];
-let contador = 0;
-
-const eventosLimpio = [];
+const eventos = ["  Festival de jazz ", "NUEVA biblioteca", "  Taller de Jazz", "Exposición de fotografía"];
 const eventosJazz = [];
-eventos.forEach((e) => {
-  eventosLimpio.push(e.trim().toUpperCase());
-});
 
-eventosLimpio.forEach((e) => {
-  if (e.includes("JAZZ")) {
-    eventosJazz.push(e);
-    contador++;
+eventos.forEach((e) => {
+  const limpio = e.trim().toUpperCase();
+  if (limpio.includes("JAZZ")) {
+    eventosJazz.push(limpio);
   }
 });
 
-console.log("Hay " + contador + " eventos de jazz, " + eventosJazz.join(" | "));
+console.log("Hay " + eventosJazz.length + " eventos de jazz: " + eventosJazz.join(" | "));
 
 // 4. Concurso de fotografía
 // Cada puntuación es jurado × 2 + publico. Las fotos descalificadas no
