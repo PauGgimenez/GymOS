@@ -5,6 +5,7 @@
 // Cuando se pida devolver un valor, usa return y muestra el resultado
 // al probar la función. Los ejercicios son independientes.
 
+"use strict"
 
 // ============================================================
 // 1. PESO DE UN ENVÍO · 10 minutos
@@ -19,6 +20,14 @@ const cajaE1 = { piezas: 4, pesoPorPieza: 250 };
 
 // Tu código:
 
+function calcularPesoEnvio(caja, pesoEmbalaje = 0) {
+  const pesoPiezas = caja.piezas * caja.pesoPorPieza;
+  return pesoPiezas + pesoEmbalaje;
+
+}
+console.log( calcularPesoEnvio(cajaE1, 80));
+
+
 
 // ============================================================
 // 2. PLAZO DE PRÉSTAMO · 10 minutos
@@ -32,6 +41,12 @@ const cajaE1 = { piezas: 4, pesoPorPieza: 250 };
 
 const libroDisponibleE2 = { titulo: "Atlas", disponible: true, diasMaximos: 7 };
 const libroPrestadoE2 = { titulo: "Guía de aves", disponible: false, diasMaximos: 7 };
+
+function estadoPrestamo(libro, dias) {
+
+
+
+}
 
 // Tu código:
 
@@ -95,11 +110,19 @@ const armarioE4 = {
 // el inventario final.
 
 const inventarioE5 = [
-  { codigo: "M-01", nombre: "Cables", stock: 5 },
+  { codigo: "  M-01", nombre: "Cables", stock: 5 },
   { codigo: "M-02", nombre: "Adaptadores", stock: 2 }
 ];
 
 // Tu código:
+function retirarMaterial(inventario, codigo, cantidad) {
+  inventarioE5.forEach(e => {
+    e.codigo.trim().toUpperCase()
+    
+  });
+
+
+}
 
 
 // ============================================================
@@ -127,3 +150,10 @@ const avisosJSONE6 =
   ']';
 
 // Tu código:
+
+const avisos = JSON.parse(avisosJSONE6)
+function prepararMantenimiento(textoJSON, zona) {
+  avisos.filter()
+
+
+}
