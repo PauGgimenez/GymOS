@@ -4,7 +4,6 @@
 // los resultados con console.log(). Cuando se pida devolver un valor,
 // usa return y muestra el resultado al probar la función.
 
-
 // ============================================================
 // 1. TARIFA DE UNA VISITA
 // ============================================================
@@ -20,7 +19,20 @@
 // Prueba con -1, 5, 6, 17, 18 y 65.
 
 // Tu código:
-
+const edad = 121;
+if (edad > 0 && edad < 120) {
+  if (edad <= 5) {
+    console.log("Entrada gratuita");
+  } else if (edad >= 6 && edad <= 17) {
+    console.log("Tarifa infantil");
+  } else if (edad >= 18 && edad <= 64) {
+    console.log("Tarifa general");
+  } else if (edad >= 65) {
+    console.log("Tarifa reducida");
+  }
+} else {
+  console.log("Edad no válida");
+}
 
 // ============================================================
 // 2. ESCALERA DE NÚMEROS PARES
@@ -37,6 +49,14 @@
 
 // Tu código:
 
+for (let fila = 1; fila <= 5; fila++) {
+  let linea = "";
+ 
+  for (let par = 2; par <= fila * 2; par += 2) {
+    linea += par; 
+  }
+  console.log(linea);
+}
 
 // ============================================================
 // 3. COSTE DE UN PEDIDO
@@ -48,7 +68,6 @@
 // y después con un envío de 4 euros.
 
 // Tu código:
-
 
 // ============================================================
 // 4. TIEMPOS DE ENTREGA
@@ -64,7 +83,6 @@ let tiemposE4 = [18, 7, 12, 25, 9, 15];
 // 5. Muestra el array tiemposE4 y cuántos elementos tiene al terminar.
 
 // Tu código:
-
 
 // ============================================================
 // 5. MONEDERO Y SUS MÉTODOS
@@ -82,20 +100,19 @@ let tiemposE4 = [18, 7, 12, 25, 9, 15];
 
 // Tu código:
 
-
 // ============================================================
 // 6. VISITAS A UN MUSEO
 // ============================================================
 
 // Convierte el siguiente texto JSON en un array llamado salas.
 const textoSalas =
-  '[' +
+  "[" +
   '{"nombre":"Cerámica","abierta":true,"minutos":25},' +
   '{"nombre":"Pintura","abierta":true,"minutos":45},' +
   '{"nombre":"Fotografía","abierta":false,"minutos":20},' +
   '{"nombre":"Escultura","abierta":true,"minutos":30},' +
   '{"nombre":"Mapas","abierta":true,"minutos":15}' +
-  ']';
+  "]";
 
 // 1. Muestra cuántas salas hay y la duración media de todas las visitas.
 // 2. Encuentra y muestra el nombre de la sala con la visita más corta.
@@ -104,7 +121,6 @@ const textoSalas =
 // 4. Ordena el array de salas de menor a mayor duración y muéstralo.
 
 // Tu código:
-
 
 // ============================================================
 // 7. AÑADIR UNA PUNTUACIÓN A LA CLASIFICACIÓN
