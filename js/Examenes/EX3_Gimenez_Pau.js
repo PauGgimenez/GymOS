@@ -104,13 +104,16 @@ tiempos.pop()
 tiempos.sort(function(a, b) {
   return b - a
 })
-const tiemposMenos12 = []
+/* const tiemposMenos12 = []
 tiempos.forEach(t => {
   if (t <= 12) {
       tiemposMenos12.push(t)
   }
   
 });
+console.log("Tiempos menores de 12 -> " + tiemposMenos12); */
+
+const tiemposMenos12 = tiempos.filter(t => t <= 12);
 console.log("Tiempos menores de 12 -> " + tiemposMenos12);
 
 console.log("Array tiempos al terminar: " + tiempos);
@@ -135,27 +138,28 @@ console.log(tiempos.length + " elementos");
 // recarga 5 euros, muestra el nuevo saldo y vuelve a comprobarlo.
 
 // Tu código:
-const monedero = {titular: "Juan", saldo: 10}
-function mostrarSaldo() {
-  return "Titular: " + monedero.titular + ", saldo: " + monedero.saldo 
-}
+const monedero = {
+  titular: "Juan",
+  saldo: 10,
+  
+  mostrarSaldo: function() {
+    return "Titular: " + this.titular + ", saldo: " + this.saldo;
+  },
+  
+  recargar: function(cantidad) {
+    this.saldo += cantidad;
+    return this.saldo;
+  },
+  
+  puedePagar: function(precio) {
+    
+    return precio <= this.saldo;
+  }
+};
 
-function recargar(cantidad) {
-  monedero.saldo += cantidad
-  return monedero.saldo
-}
-
-function puedePagar(precio) {
-  return precio <= monedero.saldo ? true : false
-
-}
-
-console.log("SALDO INICIAL: " + mostrarSaldo());
-
-
-console.log("RECARGA DE 5€");
-console.log("Saldo actualizado: " + recargar(5));
-console.log("Precio 15€, puede? " + puedePagar(15));
+console.log("SALDO INICIAL: " + monedero.mostrarSaldo());
+console.log("RECARGA DE 5€, Saldo actualizado: " + monedero.recargar(5));
+console.log("Precio 15€, puede? " + monedero.puedePagar(15));
 
 
 
@@ -199,6 +203,12 @@ salas.forEach(sala => {
 
 media /= nSalas
 
+// 3. Filtrar salas abiertas de 30 min o menos
+const salasCortasAbiertas = salas.filter(sala => sala.abierta === true && sala.minutos <= 30);
+
+console.log("Salas abiertas de 30 min o menos:");
+salasCortasAbiertas.forEach(sala => console.log("- " + sala.nombre));
+
 
 console.log("Media de minutos por visita " + media + " minutos");
 console.log("La visita mas corta fue en la sala " + corta);
@@ -225,17 +235,31 @@ console.log("La visita mas corta fue en la sala " + corta);
 
 // Tu código:
 
-const puntuaciones = [30, 20, 10]
+const puntuaciones = [30, 20, 10];
+
 function insertarPuntuacion(clasificacion, puntos) {
+  const nuevaClasificacion = [];
+  let insertado = false; // "Chivato" para saber si ya hemos colocado la puntuación
+
   for (let i = 0; i < clasificacion.length; i++) {
-    if (clasificacion[i] > puntos) {
-      clasificacion[i].
+    // Si los puntos nuevos son mayores o iguales al actual, y aún no los hemos metido...
+    if (puntos >= clasificacion[i] && !insertado) {
+      nuevaClasificacion.push(puntos); // Lo metemos primero para que quede por encima
+      insertado = true;
     }
-    
+    // Metemos el elemento normal de la clasificación
+    nuevaClasificacion.push(clasificacion[i]);
   }
-  return clasificacion
 
+  // Si hemos terminado de mirar y era tan pequeño que no entró, lo ponemos al final
+  if (!insertado) {
+    nuevaClasificacion.push(puntos);
+  }
+
+  return nuevaClasificacion;
 }
-puntuaciones.
 
-console.log(insertarPuntuacion(puntuaciones, 25));
+console.log(insertarPuntuacion(puntuaciones, 25)); // [30, 25, 20, 10]
+console.log(insertarPuntuacion(puntuaciones, 10)); // [30, 20, 10, 10]
+console.log(insertarPuntuacion(puntuaciones, 5));  // [30, 20, 10, 5]
+console.log("Original intacto:", puntuaciones);
