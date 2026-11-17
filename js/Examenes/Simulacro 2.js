@@ -78,9 +78,6 @@ usuarios.forEach(usuario => {
 });
 
 
-
-
-
 // 4. Lista de la compra automática (Cruce de Arrays - NIVEL ALTO)
 // Vas a cocinar y necesitas unos ingredientes, pero tienes que mirar qué te falta.
 // Tienes la "receta" y lo que hay en tu "despensa".
